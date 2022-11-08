@@ -27,8 +27,7 @@ const Navbar = () => {
     cursor: "pointer",
   });
   const state = useSelector((state) => state.user);
-  const { success } = useSelector((state) => state.user);
-  const [image, setImage] = useState("");
+  const { success, mainImage } = useSelector((state) => state.user);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -52,9 +51,11 @@ const Navbar = () => {
         }}
       >
         <Box flex={1}>
-          <Typography variant="h4" flex={1}>
-            Booking<b style={{ color: "red" }}>Manager</b>
-          </Typography>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Typography variant="h4" flex={1} sx={{ color: "black" }}>
+              Booking<b style={{ color: "red" }}>Manager</b>
+            </Typography>
+          </Link>
         </Box>
         <Box flex={2}>
           <Stack direction="row" gap={5}>
@@ -72,7 +73,7 @@ const Navbar = () => {
                 aria-expanded={open ? "true" : undefined}
                 onClick={handleClick}
               >
-                <Avatar src={image}></Avatar>
+                <Avatar src={mainImage}></Avatar>
               </Button>
               <Menu
                 id="fade-menu"

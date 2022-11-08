@@ -75,7 +75,6 @@ export const fetchImage = createAsyncThunk("getImage", async () => {
     const url = URL.createObjectURL(blob);
     return url;
   }
-  return "";
 });
 
 export const loginUser = createAsyncThunk("login", async (user) => {
