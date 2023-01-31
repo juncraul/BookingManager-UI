@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { apiBaseURLs } from './../../Environment';
 
 const initialState = {
   id: "",
@@ -65,7 +66,7 @@ export default userSlice.reducer;
 
 export const fetchImage = createAsyncThunk("getImage", async () => {
   const response = await axios.get(
-    "https://localhost:7221/image/get-first-image",
+    `${apiBaseURLs.BookingManagerBackEnd}/image/get-first-image`,
     { responseType: "arraybuffer" }
   );
 
@@ -79,7 +80,7 @@ export const fetchImage = createAsyncThunk("getImage", async () => {
 
 export const loginUser = createAsyncThunk("login", async (user) => {
   const response = await axios.post(
-    "https://localhost:7221/user/login?reCaptchaToken=dsadsa",
+    `${apiBaseURLs.BookingManagerBackEnd}/user/login?reCaptchaToken=dsadsa`,
     user
   );
   if (response.status < 400) {
@@ -90,7 +91,7 @@ export const loginUser = createAsyncThunk("login", async (user) => {
 
 export const signupUser = createAsyncThunk("signup", async (user) => {
   const response = await axios
-    .post("https://localhost:7221/user/signup?reCaptchaToken=dsadsa", user)
+    .post(`${apiBaseURLs.BookingManagerBackEnd}/user/signup?reCaptchaToken=dsadsa`, user)
     .catch((error) => {
       throw new Error();
     });
@@ -106,7 +107,7 @@ export const getFullUserData = createAsyncThunk("getUser", async () => {
   const items = JSON.parse(localStorage.getItem("user"));
   if (items) {
     const request = await axios.get(
-      `https://localhost:7221/user/get-user-by-id/${items.id}`,
+      `${apiBaseURLs.BookingManagerBackEnd}/user/get-user-by-id/${items.id}`,
       {
         headers: {
           Authorization: `Bearer ${items.token}`,

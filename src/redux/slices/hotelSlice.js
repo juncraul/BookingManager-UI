@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { apiBaseURLs } from './../../Environment';
 
 export const hotelSlice = createSlice({
   name: "hotels",
@@ -36,7 +37,7 @@ export default hotelSlice.reducer;
 
 export const fetchHotels = createAsyncThunk("getHotels", async () => {
   const request = await axios.get(
-    "https://localhost:7221/hotel/get-hotels?reCaptchaToken=s"
+    `${apiBaseURLs.BookingManagerBackEnd}/hotel/get-hotels?reCaptchaToken=s`
   );
 
   if (request.status < 400) {
@@ -48,7 +49,7 @@ export const fetchImages = createAsyncThunk(
   "fetchHotelImage",
   async (hotelId) => {
     const request = await axios.get(
-      `https://localhost:7221/image/get-image-by-id/${hotelId}`,
+      `${apiBaseURLs.BookingManagerBackEnd}/image/get-image-by-id/${hotelId}`,
       { responseType: "arraybuffer" }
     );
 
@@ -65,7 +66,7 @@ export const fetchHotelById = createAsyncThunk(
   "fetchHotelById",
   async (hotelId) => {
     const request = await axios.get(
-      `https://localhost:7221/hotel/get-hotel-by-id/${hotelId}?reCaptchaToken=a`
+      `${apiBaseURLs.BookingManagerBackEnd}/hotel/get-hotel-by-id/${hotelId}?reCaptchaToken=a`
     );
 
     if (request.status < 400) {
@@ -79,7 +80,7 @@ export const fetchImageForOneHotel = createAsyncThunk(
   "fetchImageForOneHotel",
   async (hotelId) => {
     const request = await axios.get(
-      `https://localhost:7221/image/get-image-by-id/${hotelId}`,
+      `${apiBaseURLs.BookingManagerBackEnd}/image/get-image-by-id/${hotelId}`,
       { responseType: "arraybuffer" }
     );
 
