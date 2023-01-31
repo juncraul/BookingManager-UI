@@ -48,10 +48,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
-      
-      - name: unzip artifact for deployment
-        run: unzip release.zip
-        
+            
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -59,4 +56,4 @@ jobs:
           app-name: 'BookingManager-UI'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FF9990EF03C44817935F9EFD005C8AFD }}
-          package: .
+          package: release.zip
