@@ -1,10 +1,10 @@
 import Environments from './Environments';
 
 export const BASE_URL_MAP = {
-    'https://bookingmanager-ui.azurewebsites.net': Environments.production,
-    'https://bookingmanager-ui.azurewebsites.net/uat': Environments.uat,
-    'https://bookingmanager-ui.azurewebsites.net/qa': Environments.qa,
-    'https://bookingmanager-ui.azurewebsites.net/dev': Environments.development
+    'bookingmanager-ui.azurewebsites.net': Environments.production,
+    'bookingmanager-ui.azurewebsites.net/uat': Environments.uat,
+    'bookingmanager-ui.azurewebsites.net/qa': Environments.qa,
+    'bookingmanager-ui.azurewebsites.net/dev': Environments.development
   };
 
 export const API_BASE_URL_MAP = {
